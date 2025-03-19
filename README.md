@@ -1,7 +1,7 @@
 # AWS-Alarms
 Automations to create alarms on CloudWatch to resources
 
-## EC2
+## auto_ec2_alarms.py
 Create default alarms for EC2
 - This script automatically create the following alarms to Linux EC2, with CW Agent installed.
 
