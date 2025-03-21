@@ -89,8 +89,8 @@ def process_instance(instance: Dict, account_alias: str, sns_topic_arn: str, reg
                          if tag['Key'] == 'Name'), 'UnnamedInstance')
     image_id = instance.get('ImageId', 'UnknownImage')
     
-    # Identificar o sistema operacional
-    platform = instance.get('Platform', 'linux').lower()  # Retorna 'windows' para instâncias Windows, ou 'linux' como padrão.
+    # Identify SO
+    platform = instance.get('Platform', 'linux').lower()  # Return 'windows' or 'linux'.
     
     alarm_configs = []
     base_alarm = {
@@ -125,7 +125,7 @@ def process_instance(instance: Dict, account_alias: str, sns_topic_arn: str, reg
         'ComparisonOperator': 'GreaterThanOrEqualToThreshold'
     })
 
-    # Adicionar alarmes para Linux (CWAgent)
+    # Add alarms for Linux (CWAgent)
     if platform == 'linux':
         metrics_client = boto3.client('cloudwatch', region_name=region, config=boto3_config)
         metrics = metrics_client.list_metrics(
@@ -162,9 +162,9 @@ def process_instance(instance: Dict, account_alias: str, sns_topic_arn: str, reg
                             'ComparisonOperator': 'GreaterThanOrEqualToThreshold'
                         })
 
-    # Adicionar alarmes para Windows com o formato solicitado
+    # Add alarms for Windows
     elif platform == 'windows':
-        # Alarme de memória para Windows
+        # Mem alarm for Windows
         alarm_configs.append({
             **base_alarm,
             'AlarmName': f"{alarm_prefix}_{account_alias}_ec2_{instance_name}_mem-used",
@@ -180,7 +180,7 @@ def process_instance(instance: Dict, account_alias: str, sns_topic_arn: str, reg
             'ComparisonOperator': 'GreaterThanOrEqualToThreshold'
         })
         
-        # Alarme de disco para Windows (para o disco C: por padrão)
+        # Disk Alarm for Windows (C:)
         alarm_configs.append({
             **base_alarm,
             'AlarmName': f"{alarm_prefix}_{account_alias}_ec2_{instance_name}_disk-used",
@@ -193,7 +193,7 @@ def process_instance(instance: Dict, account_alias: str, sns_topic_arn: str, reg
                 {'Name': 'InstanceType', 'Value': instance_type},
                 {'Name': 'instance', 'Value': 'C:'} 
             ],
-            'Threshold': 5,  # Porcentagem de espaço livre mínima
+            'Threshold': 5,  # % of free space
             'ComparisonOperator': 'LessThanOrEqualToThreshold'
         })
 
