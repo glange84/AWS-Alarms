@@ -1,6 +1,9 @@
 # AWS-Alarms
 Automations to create alarms on CloudWatch to resources
 
+## auto_ec2_alarms.py
+Create alarms for EC2
+
 ## Prerequisites
 - CloudWatch Agent installed and running
 - Personalized metrics for Linux:
@@ -11,10 +14,7 @@ Automations to create alarms on CloudWatch to resources
   - Memory % Committed Bytes In Use
   - LogicalDisk % Free Space
 
-
-## auto_ec2_alarms.py
-Create default alarms for EC2
-- This script automatically create the following alarms to Linux EC2, with CW Agent installed.
+### This script automatically create the following alarms to Linux and Windows EC2, with CW Agent installed.
 
 ### Linux/Windows
 - Memory >= 95% during 5 minuts
