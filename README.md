@@ -5,6 +5,7 @@ Automations to create alarms on CloudWatch
 Create alarms for EC2
 
 ## Prerequisites
+- SNS Topic
 - CloudWatch Agent installed and running
 - Personalized metrics for Linux:
   - mem_used_percent
