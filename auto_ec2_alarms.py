@@ -272,8 +272,8 @@ if __name__ == "__main__":
     instance_ids = []  # Leave empty to filter by tag instance_tag_name: instance_tag_value
     alarm_tag = "gl_monitoring"  # Replace with your TAG for CW-Alarm
     alarm_prefix = "gl" # Replace with your Prefix for alarm
-    instance_tag_name = "gl_env"  # Replace with your tag name (e.g. slv_env)
-    instance_tag_value = "cw"  # Replace with your tag value (e.g. teste)
+    instance_tag_name = "gl_env"  # Replace with your tag name (e.g. gl_env)
+    instance_tag_value = "prod"  # Replace with your tag value (e.g. prod)
 
     try:
         create_ec2_alarms(region, sns_topic_name, instance_ids, instance_tag_name, instance_tag_value)

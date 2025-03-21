@@ -23,10 +23,10 @@ Create alarms for EC2
 - StatusCheckFailed >= 1 during 5 minuts
 
 ### Parameters needed to execute the script
-- region = "us-east-1"  # Replace with your AWS region
-- sns_topic_name = "Infrastructure_Topic"  # Replace with your SNS topic name
-- instance_ids = []  # Leave empty to filter by tag instance_tag_name: instance_tag_value
-- alarm_tag = "gl_monitoring"  # Replace with your TAG for CW-Alarm
-- alarm_prefix = "gl" # Replace with your Prefix for alarm
-- instance_tag_name = "gl_env"  # Replace with your tag name (e.g. gl_env)
-- instance_tag_value = "prod"  # Replace with your tag value (e.g. prod)
+- region = "us-east-1" (Replace with your AWS region)
+- sns_topic_name = "Infrastructure_Topic" (Replace with your SNS topic name)
+- instance_ids = [] (Leave empty to filter by tag instance_tag_name: instance_tag_value)
+- alarm_tag = "gl_monitoring" (Replace with your TAG for CW-Alarm)
+- alarm_prefix = "gl" (Replace with your Prefix for alarm)
+- instance_tag_name = "gl_env" (Replace with your tag name (e.g. gl_env))
+- instance_tag_value = "prod" (Replace with your tag value (e.g. prod))
