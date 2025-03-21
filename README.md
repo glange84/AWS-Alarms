@@ -4,12 +4,12 @@ Automations to create alarms on CloudWatch to resources
 ## Prerequisites
 - CloudWatch Agent installed and running
 - Personalized metrics for Linux:
-- - mem_used_percent
-- - disk_used_percent
+  - mem_used_percent
+  - disk_used_percent
 
 - Personalized metrics for Windows:
-- - Memory % Committed Bytes In Use
-- - LogicalDisk % Free Space
+  - Memory % Committed Bytes In Use
+  - LogicalDisk % Free Space
 
 
 ## auto_ec2_alarms.py
